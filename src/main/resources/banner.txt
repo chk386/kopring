@@ -1,0 +1,8 @@
+${AnsiColor.RED}
+OL L=l
+L   O
+${AnsiColor.YELLOW}
+${application.title} ${application.version}
+Spring Boot ${spring-boot.version}
+${AnsiColor.DEFAULT}
+

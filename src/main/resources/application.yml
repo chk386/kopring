@@ -1,0 +1,36 @@
+spring:
+    output:
+        ansi:
+            enabled: always
+
+    docker:
+        compose:
+            lifecycle-management: start_only
+
+logging:
+    pattern:
+        console: "%clr(%d{${LOG_DATEFORMAT_PATTERN:yyyy-MM-dd HH:mm:ss}}){blue} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([%t]){magenta} %clr(%logger){cyan} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
+
+    level:
+        root: INFO
+        com.nhncommerce: DEBUG
+        org.springframework: INFO
+
+        db: DEBUG
+        web: TRACE
+        server: INFO
+        beans: INFO
+
+    group:
+        db:
+            - io.asyncer.r2dbc.mysql.QUERY
+            - org.springframework.data.repository
+        web:
+            - org.springframework.web.reactive.handler.SimpleUrlHandlerMapping
+            - org.springframework.web.reactive.function.server.support.RouterFunctionMapping
+        server:
+            - reactor.netty
+            - io.netty
+        beans:
+            - org.springframework.beans.factory.support.DefaultListableBeanFactory
+            - org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger
